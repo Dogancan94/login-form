@@ -58,6 +58,16 @@ describe("Login Page Successfully Created", () => {
     cy.get('[cy-data-button="sign-in"]').should("be.disabled");
   });
 
+  it("Invalid password show error message II", () => {
+    cy.visit("http://localhost:5173/");
+    cy.get('[cy-data-password="password"]').type("1234");
+    cy.get('[cy-data-password-error="password-error"]').should("not.exist");
+    cy.get('[cy-data-password="password"]').clear();
+    cy.get('[cy-data-password="password"]').type("123");
+    cy.get('[cy-data-button="sign-in"]').should("exist");
+    cy.get('[cy-data-button="sign-in"]').should("be.disabled");
+  });
+
   it("Password Input Works correctly I", () => {
     cy.visit("http://localhost:5173/");
     cy.get('[cy-data-password="password"]').type("1234");
