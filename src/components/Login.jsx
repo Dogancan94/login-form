@@ -99,7 +99,7 @@ export default function Login() {
         <FormGroup>
           <Label for="examplePassword">Password</Label>
           <Input
-            data-password="password"
+            cy-data-password="password"
             id="examplePassword"
             name="password"
             placeholder="Enter your password "
@@ -109,12 +109,14 @@ export default function Login() {
             invalid={errors.password}
           />
           {errors.password ? (
-            <FormFeedback>{errors.password}</FormFeedback>
+            <FormFeedback cy-data-password-error="password-error">
+              {errors.password}
+            </FormFeedback>
           ) : null}
         </FormGroup>
         <FormGroup check>
           <Input
-            data-terms="terms"
+            cy-data-terms="terms"
             id="terms"
             name="terms"
             checked={form.terms}
@@ -127,7 +129,7 @@ export default function Login() {
           </Label>
         </FormGroup>
         <FormGroup className="text-center p-4">
-          <Button color="primary" disabled={!isValid}>
+          <Button cy-data-button="sign-in" color="primary" disabled={!isValid}>
             Sign In
           </Button>
         </FormGroup>
